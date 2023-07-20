@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -20,6 +20,7 @@
                 <button type="button" class="btn btn-primary">Link</button>
             </a>
             <form method="post" action="/toggle" hx-post="/toggle" hx-swap="outerHTML" hx-target=".card">
+                @Html.AntiForgeryToken()
                 <input type="hidden" name="isFavorite" value="@item.IsFavorite.ToString().ToLower()" />
                 <input type="hidden" name="pubDate" value="@item.PubDate" />
                 <input type="hidden" name="link" value="@item.Link" />
