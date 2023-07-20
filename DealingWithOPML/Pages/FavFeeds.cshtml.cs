@@ -21,11 +21,8 @@ public class FavFeedsModel : PageModel
         var favoriteFeeds = new Dictionary<string, RssItem>(); ;
         if (favoriteFeedsCookies != null)
         {
-
              favoriteFeeds = JsonSerializer.Deserialize<Dictionary<string, RssItem>>(favoriteFeedsCookies);     
         }
-
-
         FavoriteRssList = favoriteFeeds.Values
             .ToList();
     }
