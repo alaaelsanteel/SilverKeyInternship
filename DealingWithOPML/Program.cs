@@ -1,4 +1,5 @@
 using DealingWithOPML.Pages;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,9 +22,11 @@ app.UseStaticFiles();
 
 app.MapPost("/toggle", async(HttpContext context) =>
 {
-    Console.WriteLine("working");
     try
     {
+        var antiforgery = context.RequestServices.GetRequiredService<IAntiforgery>();
+        await antiforgery.ValidateRequestAsync(context);
+
         var link = context.Request.Form["link"];
         var title = context.Request.Form["title"];
         var pubDate = context.Request.Form["pubDate"];
@@ -49,10 +52,8 @@ app.MapPost("/toggle", async(HttpContext context) =>
             RssItem feed = new RssItem { Link = link, Title = title, IsFavorite = true, PubDate = pubDate, Description = description };
             favoriteFeeds.Add(link, feed);
         }
-
         context.Response.Cookies.Append("FavoriteFeeds", JsonSerializer.Serialize(favoriteFeeds));
 
-        //context.Response.Redirect("/FavFeeds");
     }
     catch (Exception ex)
     {
