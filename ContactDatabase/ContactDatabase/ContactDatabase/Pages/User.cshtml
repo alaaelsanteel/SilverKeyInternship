@@ -1,0 +1,75 @@
+﻿@page
+@model ContactDatabase.Pages.UserModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Database.</title>
+</head>
+
+<body>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="container">
+                <h1>Contacts List</h1><br />
+                <label for="search"><h6>Search Contacts:</h6></label>
+                <input type="text" id="search" name="Search" class="form-control" onkeyup="" placeholder="Search...">
+                <table id="contactsTable" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Date Of Birth</th>
+                            <th>Married</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="data">
+                        @foreach (var contact in Model.Contacts)
+                        {
+                            <tr>
+                                <td>@contact.FirstName</td>
+                                <td>@contact.LastName</td>
+                                <td>@contact.Email</td>
+                                <td>@contact.Title</td>
+                                <td>@contact.Description</td>
+                                <td>@contact.DateOfBirth.ToShortDateString()</td>
+                                <td>@(contact.IsMarried ? "Yes" : "NO")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                var input = $("#search");
+                var table = $("#data");
+                var rows = $("tr", table);
+
+                input.on("input", function () {
+                    var filter = input.val().trim().toLowerCase();
+                    rows.each(function () {
+                        var cells = $("td", this);
+                        var visible = false;
+                        cells.each(function () {
+                            var cellText = $(this).text().trim().toLowerCase();
+                            if (cellText.includes(filter)) {
+                                visible = true;
+                                return false;
+                            }
+                        });
+                        $(this).toggle(visible);
+                    });
+                });
+            });
+        </script>
+    }
+</body>
+</html>

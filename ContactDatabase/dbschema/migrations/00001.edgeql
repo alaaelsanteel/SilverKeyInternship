@@ -1,4 +1,4 @@
-CREATE MIGRATION m1q6lx3qsbz4ldw5gqa4ct33wbplujixhr7jz2posveowvl4yiazzq
+CREATE MIGRATION m1ffdjeppgm4kpzyvmd2hkru2ditzwrqc34jwpi2i4bmqdsxgimyeq
     ONTO initial
 {
   CREATE TYPE default::Contact {
@@ -8,6 +8,9 @@ CREATE MIGRATION m1q6lx3qsbz4ldw5gqa4ct33wbplujixhr7jz2posveowvl4yiazzq
       CREATE REQUIRED PROPERTY first_name: std::str;
       CREATE REQUIRED PROPERTY last_name: std::str;
       CREATE REQUIRED PROPERTY marriage_status: std::bool;
+      CREATE REQUIRED PROPERTY password: std::str;
+      CREATE REQUIRED PROPERTY role: std::str;
       CREATE REQUIRED PROPERTY title: std::str;
+      CREATE REQUIRED PROPERTY username: std::str;
   };
 };
