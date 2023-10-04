@@ -1,0 +1,23 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@foreach (var item in Model.RssList)
+{
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-date">@item.PubDate</h4>
+            <h5>@item.Title</h5>
+
+            <p>@Html.Raw(@item.Description)</p>
+            <a href="@item.Link" class="container-link" target="_blank">
+                <button type="button" class="btn btn-primary">Link</button>
+            </a>
+        </div>
+    </div>
+    <br />
+}
+
+

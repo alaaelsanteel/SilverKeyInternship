@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+   
+    <!-- Font CDN Links-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" style.css">
+    <title>Personal Portfolio</title>
+
+    <!-- java Script-->
+    <script>
+        function downloadPDF() {
+            var link = document.createElement('a');
+            link.href = 'Alaa_Elsanteel_Resume__.pdf';
+            link.download = 'Alaa_Elsanteel_Resume.pdf';
+            link.click();
+        }
+    </script>
+    <script>
+        function openEmail() {
+            window.location.href = 'mailto:elsanteelalaa@gmail.com';
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- -------Home section --------->
+    <div id="header">
+        <div class="container">
+           
+            <nav>
+                <div class="logo">Alaa Elsanteel<b>.</b></div>
+                <ul class="navItems">
+                    <li> <a href="#header">Home</a></li>
+                    <li> <a href="#about">About</a></li>
+                    <li> <a href="#skills">Skills</a></li>
+
+                </ul>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/alaaelsanteel/"> <i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/firebymisfire__/"> <i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/alaaelsanteel/"> <i class="fab fa-facebook"></i></a>
+                </div>
+            </nav>
+            <div class="wrapper">
+               
+                <div class="cols cols0">
+                    <span class="topline">Hello,</span>
+                    <h1>I'm A <span class="multitext">Web Developer</span></h1>
+
+
+                    <div class="btns">
+
+                        <button onclick="downloadPDF()">View CV</button>
+                        <button onclick="openEmail()">Hire Me</button>
+                    </div>
+                </div>
+                <div class="cols cols1">
+                    <div class="imgbox">
+                        <img src="blue.png" id="splash">
+                        <img src="mef.png">
+                    </div>
+               
+                </div>
+
+            </div>
+        
+        </div>
+    </div>
+
+    <!-- -------About section --------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="aboutme">
+                    <h1>About Me</h1>
+                </div>
+
+                <div class="col4">
+                    <ul>
+                        <li>
+                            <h3>Education</h3>
+                        </li>
+                        <p>3rd Year - Bachelor’s Degree in Computer
+                            Science,<br>
+                            Misr Higher Institute for commerce & computers
+                            10/2020 – 06/2024 | Mansoura, Egypt</p>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- -------Skills section --------->
+    <div id="skills">
+        <div class="container">
+            <div class="row2">
+                <div class="skillsde">
+                    <h1>Skills</h1>
+                </div>
+
+                <div class="col5">
+                    <ul>
+                        <li><span>C/C++</span></li>
+                        <li><span>Python</span></li>
+                        <li><span>HTML</span></li>
+                        <li><span>CSS</span></li>
+                        <li><span>Bootstrap</span></li>
+                        <li><span>SQL</span></li>
+                        <li><span>Django</span></li>
+                        <li><span>APIs</span></li>
+                        <li><span>Data Structure & Algorithms</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
