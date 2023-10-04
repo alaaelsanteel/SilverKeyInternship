@@ -1,0 +1,50 @@
+﻿@page
+@model DealingWithOPML.Pages.FavFeedsModel
+@{
+    ViewData["Title"] = "Favorite Feeds";
+}
+<h1>Favorite Feeds</h1>
+@if (Model.FavoriteRssList.Count > 0)
+{
+    @foreach (var item in Model.FavoriteRssList)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-date">@item.PubDate</h4>
+                <h5>@item.Title</h5>
+
+                <p>@Html.Raw(@item.Description)</p>
+                <a href="@item.Link" class="container-link" target="_blank">
+                    <button type="button" class="btn btn-primary">Link</button>
+                </a>
+            </div>
+        </div>
+        <br />
+    }
+    <nav>
+        <ul class="pagination justify-content-center">
+            @if(Model.PageNumber >1)
+            {
+                <li class="page_item">
+                    <a class="page-link" href="@Url.Page("/FavFeeds?", new { pageNumber = Model.PageNumber - 1, pageSize = Model.PageSize } )">Previous</a>
+                </li>
+            }
+            @for(int i = 1; i <=Model.TotalPages; i++ )
+            {
+                <li class="page_item @(i == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Page("/FavFeeds?", new { pageNumber = i, pageSize = Model.PageSize } )">@i</a>
+                </li>
+            }
+            @if(Model.PageNumber < Model.TotalPages)
+            {
+                <li class="page_item">
+                    <a class="page-link" href="@Url.Page("/FavFeeds?", new { pageNumber = Model.PageNumber + 1, pageSize = Model.PageSize } )">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+else
+{
+    <h3>There's No Favorite Feeds.</h3>
+}
