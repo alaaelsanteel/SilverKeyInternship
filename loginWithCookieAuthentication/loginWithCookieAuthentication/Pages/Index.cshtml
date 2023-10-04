@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Login page";
+}
+
+<div class="text-center">
+    <div class="card justify-content-center pt-3">
+        @if (Model.IsLoggedIn)
+        {
+            <h2>Welcome, intern</h2>
+            <p>You are logged in.</p>
+            <form method="post" asp-page-handler="Logout">
+                <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+            <br /><br />
+        }
+        else
+        {
+            <h2>Login</h2>
+            <br /> <br />
+            <form method="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="Username" required>
+                    <br> <br>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="Password" required>
+                    <br><br>
+                </div>
+                <button class="btn btn-success"type="submit">Login</button>
+            </form>
+
+            @if (!ModelState.IsValid)
+            {
+                <div class="error-summary">
+                    <br>
+                    <p>Please Enter a vaild Username and Password </p>
+                    
+                </div>
+            }
+        }
+    </div>
+
+</div>
